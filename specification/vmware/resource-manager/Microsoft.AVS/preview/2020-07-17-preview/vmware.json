@@ -57,6 +57,10 @@
     {
       "name": "Authorizations",
       "description": ""
+    },
+    {
+      "name": "StoragePolicies",
+      "description": ""
     }
   ],
   "parameters": {
@@ -133,7 +137,7 @@
     "/providers/Microsoft.AVS/storagePolicies": {
       "get": {
         "tags": [
-          "Operations"
+          "StoragePolicies"
         ],
         "description": "Lists all of the available storage policies",
         "operationId": "StoragePolicies_List",
