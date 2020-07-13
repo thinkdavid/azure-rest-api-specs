@@ -1719,6 +1719,16 @@
           "items": {
             "$ref": "#/definitions/IdentitySource"
           }
+        },
+        "vcenterPassword": {
+          "description": "Reset the vCenter admin password for the private cloud",
+          "type": "string",
+          "x-ms-secret": true
+        },
+        "nsxtPassword": {
+          "description": "Reset the NSX-T admin password for the private cloud",
+          "type": "string",
+          "x-ms-secret": true
         }
       }
     },
