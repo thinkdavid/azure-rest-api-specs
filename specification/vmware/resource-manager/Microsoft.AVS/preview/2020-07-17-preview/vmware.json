@@ -65,6 +65,10 @@
     {
       "name": "Arc",
       "description": ""
+    },
+    {
+      "name": "GlobalReachConnections",
+      "description": ""
     }
   ],
   "parameters": {
@@ -98,6 +102,14 @@
       "required": true,
       "type": "string",
       "description": "Name of the ExpressRoute Circuit Authorization in the private cloud",
+      "x-ms-parameter-location": "method"
+    },
+    "globalReachConnectionName": {
+      "name": "globalReachConnectionName",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "Name of the global reach connection in the private cloud",
       "x-ms-parameter-location": "method"
     }
   },
@@ -1332,6 +1344,206 @@
           }
         }
       }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/globalReachConnections": {
+      "get": {
+        "operationId": "GlobalReachConnections_List",
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "tags": [
+          "GlobalReachConnections"
+        ],
+        "summary": "List global reach connections in a private cloud",
+        "parameters": [
+          {
+            "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/privateCloudName"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GlobalReachConnectionList"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "GlobalReachConnections_List": {
+            "$ref": "./examples/GlobalReachConnections_List.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/globalReachConnections/{globalReachConnectionName}": {
+      "get": {
+        "operationId": "GlobalReachConnections_Get",
+        "tags": [
+          "GlobalReachConnections"
+        ],
+        "summary": "Get a global reach connection by name in a private cloud",
+        "parameters": [
+          {
+            "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/privateCloudName"
+          },
+          {
+            "$ref": "#/parameters/globalReachConnectionName"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GlobalReachConnection"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "GlobalReachConnections_Get": {
+            "$ref": "./examples/GlobalReachConnections_Get.json"
+          }
+        }
+      },
+      "put": {
+        "operationId": "GlobalReachConnections_CreateOrUpdate",
+        "x-ms-long-running-operation": true,
+        "tags": [
+          "GlobalReachConnections"
+        ],
+        "summary": "Create or update a global reach connection in a private cloud",
+        "parameters": [
+          {
+            "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "privateCloudName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the private cloud."
+          },
+          {
+            "$ref": "#/parameters/globalReachConnectionName"
+          },
+          {
+            "name": "globalReachConnection",
+            "description": "A global reach connection in the private cloud",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GlobalReachConnection"
+            }
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GlobalReachConnection"
+            }
+          },
+          "201": {
+            "description": "accepted operation",
+            "schema": {
+              "$ref": "#/definitions/GlobalReachConnection"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "GlobalReachConnections_CreateOrUpdate": {
+            "$ref": "./examples/GlobalReachConnections_CreateOrUpdate.json"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "GlobalReachConnections_Delete",
+        "x-ms-long-running-operation": true,
+        "tags": [
+          "GlobalReachConnections"
+        ],
+        "summary": "Delete a global reach connection in a private cloud",
+        "parameters": [
+          {
+            "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/privateCloudName"
+          },
+          {
+            "$ref": "#/parameters/globalReachConnectionName"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. The delete has succeeded"
+          },
+          "202": {
+            "description": "Accepted. The delete will complete asynchronously"
+          },
+          "204": {
+            "description": "No Content. No global reach connection to delete"
+          },
+          "default": {
+            "description": "Error response describing why the operation failed",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "GlobalReachConnections_Delete": {
+            "$ref": "./examples/GlobalReachConnections_Delete.json"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -2075,39 +2287,39 @@
       }
     },
     "Arc": {
-      "description": "An Arc configuration resource",  
-      "allOf": [ 
-        { 
-          "$ref": "#/definitions/Resource" 
-        } 
-      ], 
-      "properties": { 
-        "properties": { 
-          "description": "The properties of an Arc resource", 
-          "$ref": "#/definitions/ArcProperties", 
-          "x-ms-client-flatten": true 
-        } 
-      } 
+      "description": "An Arc configuration resource",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Resource"
+        }
+      ],
+      "properties": {
+        "properties": {
+          "description": "The properties of an Arc resource",
+          "$ref": "#/definitions/ArcProperties",
+          "x-ms-client-flatten": true
+        }
+      }
     },
     "ArcProperties": {
-      "description": "The properties of an Arc resource", 
-      "properties": { 
-        "erAuthTokenName": { 
-          "description": "Name of the Express route authentication token", 
+      "description": "The properties of an Arc resource",
+      "properties": {
+        "erAuthTokenName": {
+          "description": "Name of the Express route authentication token",
           "type": "string"
-        }, 
-        "arcResourceGroupName": { 
-          "description": "Name of resource group for deploying Arc fabric resources", 
+        },
+        "arcResourceGroupName": {
+          "description": "Name of resource group for deploying Arc fabric resources",
           "type": "string"
-        }, 
-        "vnetAddrBlock": { 
+        },
+        "vnetAddrBlock": {
           "description": "CIDR block for deploying Arc machinery. The address block should be unique across VNet in your subscription as well as on-premise. Make sure the CIDR format is conformed to (A.B.C.D/X) where A,B,C,D are between 0 and 255, and X is between 0 and 26",
           "type": "string"
-        }, 
-        "location": { 
-          "description": "Optionally, set the Arc fabric resources deployment location. Defaults to the private cloud location", 
-          "type": "string" 
-        }, 
+        },
+        "location": {
+          "description": "Optionally, set the Arc fabric resources deployment location. Defaults to the private cloud location",
+          "type": "string"
+        },
         "arcSubscriptionId": {
 	        "description": "Optionally, set ID of the Arc fabric resources deployment Subscription. Defaults to the private cloud subscription",
           "type": "string"
@@ -2126,7 +2338,7 @@
             "name": "ArcConfigurationState",
             "modelAsString": true
           }
-        },	
+        },
         "infraResourceGroupName": {
           "description": "Name of the Arc infrastructure resource group for a private cloud",
           "type": "string",
@@ -2141,8 +2353,87 @@
           "description": "ARM ID of the ArcZone resource deployed in arc resource group",
           "type": "string",
           "readOnly": true
-        } 	
-      }  
+        }
+      }
+    },
+    "GlobalReachConnectionList": {
+      "description": "A paged list of global reach connections",
+      "properties": {
+        "value": {
+          "description": "The items on a page",
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/GlobalReachConnection"
+          }
+        },
+        "nextLink": {
+          "description": "URL to get the next page if any",
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "GlobalReachConnection": {
+      "description": "A global reach connection resource",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Resource"
+        }
+      ],
+      "properties": {
+        "properties": {
+          "description": "The properties of a global reach connection resource",
+          "$ref": "#/definitions/GlobalReachConnectionProperties",
+          "x-ms-client-flatten": true
+        }
+      }
+    },
+    "GlobalReachConnectionProperties": {
+      "description": "The properties of a global reach connection",
+      "properties": {
+        "provisioningState": {
+          "description": "The state of the  ExpressRoute Circuit Authorization provisioning",
+          "type": "string",
+          "readOnly": true,
+          "enum": [
+            "Succeeded",
+            "Failed",
+            "Updating"
+          ],
+          "x-ms-enum": {
+            "name": "GlobalReachConnectionProvisioningState",
+            "modelAsString": true
+          }
+        },
+        "addressPrefix": {
+          "description": "The network used for global reach carved out from the original network block provided for the private cloud",
+          "type": "string",
+          "readOnly": true
+        },
+        "authorizationKey": {
+          "description": "Authorization key from the peer express route used for the global reach connection",
+          "type": "string"
+        },
+        "circuitConnectionStatus": {
+          "description": "The connection status of the global reach connection",
+          "type": "string",
+          "readOnly": true,
+          "enum": [
+            "Connected",
+            "Connecting",
+            "Disconnected"
+          ],
+          "x-ms-enum": {
+            "name": "GlobalReachConnectionStatus",
+            "modelAsString": true
+          }
+        },
+        "peerExpressRouteCircuit": {
+          "type": "string",
+          "description": "Identifier of the ExpressRoute Circuit to peer with in the global reach connection"
+        }
+      }
     }
   }
 }
