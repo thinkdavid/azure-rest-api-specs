@@ -31,6 +31,7 @@ These settings apply only when `--tag=package-2020-07-17-preview` is specified o
 ``` yaml $(tag) == 'package-2020-07-17-preview'
 input-file:
 - Microsoft.AVS/preview/2020-07-17-preview/vmware.json
+
 directive:
   - suppress: R3020
     from: vmware.json
