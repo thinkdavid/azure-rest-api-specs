@@ -1,16 +1,19 @@
 {
     "parameters": {
-      "api-version": "2020-07-17-preview"
+      "subscriptionId": "{subscription-id}",
+      "api-version": "2020-07-17-preview",
+      "location": "eastus"
     },
     "responses": {
       "200": {
-        "body": {
-          "value": [
-            {
-              "name": "Horizon"
+        "body": [ 
+          {
+            "properties": {
+              "name": "raid1ftt1",
+              "minHosts": 3
             }
-          ]
-        }
+          }
+        ]
       }
     }
   }

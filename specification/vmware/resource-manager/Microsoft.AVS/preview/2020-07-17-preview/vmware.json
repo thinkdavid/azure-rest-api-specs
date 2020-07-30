@@ -59,10 +59,6 @@
       "description": ""
     },
     {
-      "name": "StoragePolicies",
-      "description": ""
-    },
-    {
       "name": "Arc",
       "description": ""
     },
@@ -150,10 +146,10 @@
         }
       }
     },
-    "/providers/Microsoft.AVS/storagePolicies": {
-      "get": {
+    "/subscriptions/{subscriptionId}/providers/Microsoft.AVS/locations/{location}/defaultStoragePolicies": {
+      "post": {
         "tags": [
-          "StoragePolicies"
+          "Locations"
         ],
         "description": "Lists all of the available storage policies",
         "operationId": "StoragePolicies_List",
@@ -161,6 +157,16 @@
           "nextLinkName": "nextLink"
         },
         "parameters": [
+          {
+            "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "name": "location",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Azure region"
+          },
           {
             "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
           }
@@ -2063,6 +2069,10 @@
           "description": "The cluster size",
           "type": "integer",
           "format": "int32"
+        },
+        "storagePolicy": {
+          "description": "The storage policy of the cluster",
+          "$ref": "#/definitions/StoragePolicy"
         }
       }
     },
@@ -2071,12 +2081,12 @@
       "required": [
         "clusterSize"
       ],
-      "allOf": [
-        {
-          "$ref": "#/definitions/ClusterUpdateProperties"
-        }
-      ],
       "properties": {
+        "clusterSize": {
+          "description": "The cluster size",
+          "type": "integer",
+          "format": "int32"
+        },
         "clusterId": {
           "description": "The identity",
           "type": "integer",
@@ -2199,11 +2209,16 @@
       ]
     },
     "StoragePolicy": {
-      "description": "The resource model definition representing a storage policy for a cluster",
+      "description": "The resource model definition representing a default storage policy for a cluster",
       "properties": {
         "name": {
           "type": "string",
-          "description": "The name of the storage policy -- to be either Default or Horizon."
+          "description": "The name of the storage policy."
+        },
+        "minHosts" : {
+          "type": "integer",
+          "description": "The minimum number of hosts to use this storage policy",
+          "readOnly": true
         }
       },
       "required": [
