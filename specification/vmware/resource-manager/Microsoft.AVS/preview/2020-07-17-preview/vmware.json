@@ -152,7 +152,7 @@
           "Locations"
         ],
         "description": "Lists all of the available storage policies",
-        "operationId": "StoragePolicies_List",
+        "operationId": "DefaultStoragePolicies_List",
         "x-ms-pageable": {
           "nextLinkName": "nextLink"
         },
@@ -187,7 +187,7 @@
         },
         "x-ms-examples": {
           "Operations_List": {
-            "$ref": "./examples/StoragePolicies_List.json"
+            "$ref": "./examples/DefaultStoragePolicies_List.json"
           }
         }
       }
@@ -2217,6 +2217,7 @@
         },
         "minHosts" : {
           "type": "integer",
+          "format": "int32",
           "description": "The minimum number of hosts to use this storage policy",
           "readOnly": true
         }
