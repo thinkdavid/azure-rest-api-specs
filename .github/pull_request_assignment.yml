@@ -13,8 +13,8 @@
     paths:
       - "specification/network/**"
     reviewers:
-      - lirenhe
       - MyronFanQiu
+      - lirenhe
 
 - rule:
     paths:
@@ -137,7 +137,6 @@
       - "**"
     reviewers:
       - yungezz
-      - zikalino
       - erich-wang
       - NullMDR
       - raych1
@@ -153,3 +152,4 @@
       - leni-msft
       - qianwens
       - ruowan
+      - jianyexi
