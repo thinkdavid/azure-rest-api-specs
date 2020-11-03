@@ -3387,8 +3387,7 @@
           "$ref": "#/definitions/CommonClusterProperties"
         }
       ],
-      "properties": {
-      }
+      "properties": {}
     },
     "PrivateCloudList": {
       "description": "A paged list of private clouds",
